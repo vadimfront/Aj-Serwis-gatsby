@@ -45,12 +45,12 @@ exports.createPages = async ({ graphql, actions }) => {
         header: `header--${language.slug}`,
       },
     })
-    createPage({
-      path: `${slug}contacts`,
-      component: path.resolve(`src/templates/contact-page.tsx`),
-      slices: {
-        header: `header-${language.slug}`,
-      },
-    })
+    // createPage({
+    //   path: `${slug}contacts`,
+    //   component: path.resolve(`src/templates/contact-page.tsx`),
+    //   slices: {
+    //     header: `header-${language.slug}`,
+    //   },
+    // })
   })
 }
