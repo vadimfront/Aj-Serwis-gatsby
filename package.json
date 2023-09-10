@@ -33,6 +33,7 @@
     "@hookform/error-message": "^2.0.1",
     "@hookform/resolvers": "^3.3.1",
     "@react-spring/web": "^9.7.3",
+    "@vercel/gatsby-plugin-vercel-builder": "^2.0.4",
     "dotenv": "^16.3.1",
     "framer-motion": "^10.16.0",
     "gatsby": "~5.12.0",
@@ -60,6 +61,11 @@
     "typeface-merriweather": "1.1.13",
     "typeface-montserrat": "1.1.13",
     "yup": "^1.2.0"
+  },
+  "overrides": {
+    "babel-plugin-lodash": {
+      "@babel/types": "~7.20.0"
+    }
   },
   "devDependencies": {
     "@types/isomorphic-fetch": "^0.0.36",
