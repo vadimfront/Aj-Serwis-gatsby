@@ -1,0 +1,74 @@
+const path = require(`path`)
+
+exports.createPages = async gatsbyUtilities => {
+  await createHomePage({ gatsbyUtilities })
+  await createContactPage({ gatsbyUtilities })
+}
+
+const getLanguages = async gatsbyUtilities => {
+  const result = await gatsbyUtilities.graphql(`
+    query Languages {
+      allWp {
+        nodes {
+          languages {
+            code
+            slug
+          }
+        }
+      }
+    }
+  `)
+
+  return await result.data.allWp.nodes[0].languages
+}
+
+const createHeaderSlice = ({ language }) => ({
+  id: `header-${language.slug}`,
+  component: path.resolve(`src/components/Header/Header.tsx`),
+  context: {
+    lang: `header_menu_${language.slug}`,
+  },
+})
+
+const basePageStructure = async (
+  gatsbyUtilities,
+  componentPath,
+  pageName = ""
+) => {
+  const { createPage, createSlice } = gatsbyUtilities.actions
+
+  const languages = await getLanguages(gatsbyUtilities)
+
+  languages.forEach(language => {
+    const headerSlice = createHeaderSlice({ language })
+    createSlice(headerSlice)
+
+    const slug = language.slug === "uk" ? "/" : `/${language.slug}/`
+
+    const path = pageName.length ? `${slug}${pageName}` : slug
+
+    createPage({
+      path: path,
+      component: componentPath,
+      context: {
+        code: language.code,
+        slug: `header_menu_${language.slug}`,
+      },
+      slices: {
+        header: `header-${language.slug}`,
+      },
+    })
+  })
+}
+
+const createHomePage = async ({ gatsbyUtilities }) => {
+  const homePage = path.resolve(`src/templates/home-page.tsx`)
+
+  await basePageStructure(gatsbyUtilities, homePage)
+}
+
+const createContactPage = async ({ gatsbyUtilities }) => {
+  const contactPage = path.resolve(`src/templates/contact-page.tsx`)
+
+  await basePageStructure(gatsbyUtilities, contactPage, "contacts")
+}
