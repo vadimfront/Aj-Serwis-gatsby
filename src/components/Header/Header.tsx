@@ -6,7 +6,7 @@ import { theme } from "../../common/theme"
 import { StyledHeader } from "./Header.styled"
 import { graphql } from "gatsby"
 import { AppProvider } from "../../context/AppProvider"
-import { LangProvider, useLangContext } from "../../context/LangProvider"
+import { LangProvider } from "../../context/LangProvider"
 
 const Header = ({ data }: any) => {
   const navList = data.allWpMenu.nodes[0].menuItems.nodes
@@ -14,8 +14,6 @@ const Header = ({ data }: any) => {
   const [scrolling, setScrolling] = useState(false)
   const [prevScrollPosition, setPrevScrollPosition] = useState(0)
   const [headerStyle, setHeaderStyle] = useState({})
-
-  const { selectedValue } = useLangContext()
 
   useEffect(() => {
     const handleScroll = () => {
