@@ -43,15 +43,11 @@ const Header = ({ data }: any) => {
   }, [prevScrollPosition, scrolling])
 
   return (
-    <AppProvider>
-      <LangProvider>
-        <StyledHeader style={headerStyle}>
-          <TopBar />
-          <AppBar theme={theme} menu={navList} logo={""} />
-          <MobileMenu theme={theme} />
-        </StyledHeader>
-      </LangProvider>
-    </AppProvider>
+    <StyledHeader style={headerStyle}>
+      <TopBar />
+      <AppBar theme={theme} menu={navList} logo={""} />
+      <MobileMenu theme={theme} />
+    </StyledHeader>
   )
 }
 

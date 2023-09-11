@@ -8,8 +8,8 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
-  const { selectedValue, setSelectedValue } = useLangContext()
-  console.log(selectedValue)
+  const { selectedValue } = useLangContext()
+
   return (
     <>
       {selectedValue === "UK" && <Slice alias="header_uk" />}
@@ -17,14 +17,10 @@ const Layout = ({ children }: LayoutProps) => {
       {selectedValue === "PL" && <Slice alias="header_pl" />}
 
       <main>{children}</main>
-      {selectedValue}
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
-        {` `}
-        And <a href="https://wordpress.org/">WordPress</a>
-      </footer>
+
+      {selectedValue === "UK" && <Slice alias="footer_uk" />}
+      {selectedValue === "EN" && <Slice alias="footer_en" />}
+      {selectedValue === "PL" && <Slice alias="footer_pl" />}
     </>
   )
 }

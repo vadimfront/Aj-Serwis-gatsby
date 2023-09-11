@@ -6147,6 +6147,13 @@ gatsby-plugin-image@^3.0.0-next, gatsby-plugin-image@^3.12.0:
     objectFitPolyfill "^2.3.5"
     prop-types "^15.8.1"
 
+gatsby-plugin-layout@^4.12.0:
+  version "4.12.0"
+  resolved "https://registry.npmjs.org/gatsby-plugin-layout/-/gatsby-plugin-layout-4.12.0.tgz"
+  integrity sha512-MTLmay29gGvRu/v/6dNhD7tg2T6AMaUE1HAOGnCFo+oHZFRh7CMdte3RoGZUYi2NT49VPsADsDWI4a0JyI+oRw==
+  dependencies:
+    "@babel/runtime" "^7.20.13"
+
 gatsby-plugin-manifest@^5.3.1:
   version "5.12.0"
   resolved "https://registry.npmjs.org/gatsby-plugin-manifest/-/gatsby-plugin-manifest-5.12.0.tgz"

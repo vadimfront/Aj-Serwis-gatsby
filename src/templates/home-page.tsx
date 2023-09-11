@@ -18,7 +18,6 @@ const HomePage = ({ data }: IHomeProps) => {
     <>
       <Hero hero={hero} />
       {aboutUs.title && <AboutUs aboutUs={aboutUs} />}
-
       {allWpVacancies.nodes.length && (
         <VacanciesSlider title="Vacancies" vacancies={allWpVacancies.nodes} />
       )}

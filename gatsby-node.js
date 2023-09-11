@@ -34,6 +34,11 @@ exports.createPages = async ({ graphql, actions }) => {
           lang: `header_menu_${language.slug}`,
         },
       })
+      createSlice({
+        id: `footer_${language.slug}`,
+        component: path.resolve(`src/components/Footer/Footer.tsx`),
+        alias: `footer_${language.slug}`,
+      })
 
       createPage({
         path: slug,
@@ -45,6 +50,7 @@ exports.createPages = async ({ graphql, actions }) => {
         },
         slices: {
           header: `header_${language.slug}`,
+          footer: `footer_${language.slug}`,
         },
       })
       createPage({
@@ -55,6 +61,7 @@ exports.createPages = async ({ graphql, actions }) => {
         },
         slices: {
           header: `header_${language.slug}`,
+          footer: `footer_${language.slug}`,
         },
       })
     })

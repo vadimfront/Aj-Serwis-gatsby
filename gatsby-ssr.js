@@ -10,19 +10,19 @@ import "./src/css/normalize.css"
 
 // custom CSS styles
 import "./src/css/style.css"
-
 import { AppProvider } from "./src/context/AppProvider"
 import { ThemeProvider } from "@emotion/react"
-import { theme } from "./src/common/theme"
 import { LangProvider } from "./src/context/LangProvider"
+import { theme } from "./src/common/theme"
 
 export function wrapPageElement({ element, props }) {
+  return <Layout {...props}>{element}</Layout>
+}
+export function wrapRootElement({ element }) {
   return (
     <AppProvider>
       <ThemeProvider theme={theme}>
-        <LangProvider>
-          <Layout {...props}>{element}</Layout>
-        </LangProvider>
+        <LangProvider>{element}</LangProvider>
       </ThemeProvider>
     </AppProvider>
   )
