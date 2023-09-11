@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react"
-import { gql, useQuery } from "@apollo/client"
 import AppBar from "./AppBar/AppBar"
 import TopBar from "./TopBar/TopBar"
 import MobileMenu from "./MobileMneu/MobileMenu"
 import { theme } from "../../common/theme"
 import { StyledHeader } from "./Header.styled"
-import { useLangContext } from "../../context/LangProvider"
-import { IHeaderProps } from "../../interfaces/headerInterface"
 import { graphql } from "gatsby"
+import { AppProvider } from "../../context/AppProvider"
+import { LangProvider, useLangContext } from "../../context/LangProvider"
 
 const Header = ({ data }: any) => {
   const navList = data.allWpMenu.nodes[0].menuItems.nodes
@@ -46,11 +45,15 @@ const Header = ({ data }: any) => {
   }, [prevScrollPosition, scrolling])
 
   return (
-    <StyledHeader style={headerStyle}>
-      <TopBar />
-      <AppBar theme={theme} menu={navList} logo={""} />
-      <MobileMenu theme={theme} />
-    </StyledHeader>
+    <AppProvider>
+      <LangProvider>
+        <StyledHeader style={headerStyle}>
+          <TopBar />
+          <AppBar theme={theme} menu={navList} logo={""} />
+          <MobileMenu theme={theme} />
+        </StyledHeader>
+      </LangProvider>
+    </AppProvider>
   )
 }
 

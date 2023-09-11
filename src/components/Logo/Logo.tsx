@@ -24,7 +24,6 @@ const Logo: React.FC<LogoProps> = ({ logoUrl, loc, size }) => {
   `)
 
   const logo = data.allWp.nodes[0].siteLogo
-  console.log(logo)
 
   return (
     <StyledLogo to="/">

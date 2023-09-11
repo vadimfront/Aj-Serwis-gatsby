@@ -28,8 +28,11 @@ const LangSelect = () => {
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target
+
     setSelectedValue(value)
-    localStorage.setItem("selectedLang", value)
+    if (typeof window !== "undefined") {
+      localStorage.setItem("selectedLang", value)
+    }
   }
 
   return (

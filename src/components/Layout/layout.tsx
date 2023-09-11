@@ -1,40 +1,31 @@
 import React, { ReactNode } from "react"
-import { AppProvider } from "../../context/AppProvider"
-import { LangProvider, useLangContext } from "../../context/LangProvider"
 import { Slice } from "gatsby"
-import { ThemeProvider } from "@emotion/react"
-import { theme } from "../../common/theme"
-import { ApolloProvider } from "@apollo/client"
-import client from "../../gatsby-plugin-apollo/client"
+import { useLangContext } from "../../context/LangProvider"
 
 interface LayoutProps {
   children: ReactNode
+  pageContext: any
 }
 
 const Layout = ({ children }: LayoutProps) => {
-  const { selectedValue } = useLangContext()
+  const { selectedValue, setSelectedValue } = useLangContext()
   console.log(selectedValue)
   return (
-    <ApolloProvider client={client}>
-      <LangProvider>
-        <AppProvider>
-          <ThemeProvider theme={theme}>
-            {selectedValue === "UK" && <Slice alias="header--uk" />}
-            {selectedValue === "EN" && <Slice alias="header--en" />}
-            {selectedValue === "PL" && <Slice alias="header--pl" />}
-            <main>{children}</main>
+    <>
+      {selectedValue === "UK" && <Slice alias="header_uk" />}
+      {selectedValue === "EN" && <Slice alias="header_en" />}
+      {selectedValue === "PL" && <Slice alias="header_pl" />}
 
-            <footer>
-              © {new Date().getFullYear()}, Built with
-              {` `}
-              <a href="https://www.gatsbyjs.com">Gatsby</a>
-              {` `}
-              And <a href="https://wordpress.org/">WordPress</a>
-            </footer>
-          </ThemeProvider>
-        </AppProvider>
-      </LangProvider>
-    </ApolloProvider>
+      <main>{children}</main>
+      {selectedValue}
+      <footer>
+        © {new Date().getFullYear()}, Built with
+        {` `}
+        <a href="https://www.gatsbyjs.com">Gatsby</a>
+        {` `}
+        And <a href="https://wordpress.org/">WordPress</a>
+      </footer>
+    </>
   )
 }
 

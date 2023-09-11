@@ -59,7 +59,6 @@ const Form: FC<FormProps> = ({ style, lightTheme = false }) => {
     setBtnDisabled()
   }, [allFieldsValue])
   const onSubmit: SubmitHandler<FormFields> = (data: FormFields) => {
-    console.log(data)
     reset()
   }
 

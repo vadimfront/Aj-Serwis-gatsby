@@ -1,6 +1,6 @@
 import React from "react"
 import Layout from "./src/components/Layout/layout"
-import client from "./src/gatsby-plugin-apollo/client"
+
 // custom typefaces
 import "typeface-montserrat"
 import "typeface-merriweather"
@@ -10,9 +10,20 @@ import "./src/css/normalize.css"
 
 // custom CSS styles
 import "./src/css/style.css"
-import { ApolloProvider } from "@apollo/client"
+
+import { AppProvider } from "./src/context/AppProvider"
+import { ThemeProvider } from "@emotion/react"
+import { theme } from "./src/common/theme"
 import { LangProvider } from "./src/context/LangProvider"
 
 export function wrapPageElement({ element, props }) {
-  return <Layout {...props}>{element}</Layout>
+  return (
+    <AppProvider>
+      <ThemeProvider theme={theme}>
+        <LangProvider>
+          <Layout {...props}>{element}</Layout>
+        </LangProvider>
+      </ThemeProvider>
+    </AppProvider>
+  )
 }

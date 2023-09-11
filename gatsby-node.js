@@ -27,9 +27,9 @@ exports.createPages = async ({ graphql, actions }) => {
       const slug = language.slug === "uk" ? "/" : `/${language.slug}/`
 
       createSlice({
-        id: `header--${language.slug}`,
+        id: `header_${language.slug}`,
         component: path.resolve(`src/components/Header/Header.tsx`),
-        alias: `header--${language.slug}`,
+        alias: `header_${language.slug}`,
         context: {
           lang: `header_menu_${language.slug}`,
         },
@@ -41,16 +41,20 @@ exports.createPages = async ({ graphql, actions }) => {
         context: {
           code: language.code,
           slug: `header_menu_${language.slug}`,
+          lang: language.slug,
         },
         slices: {
-          header: `header--${language.slug}`,
+          header: `header_${language.slug}`,
         },
       })
       createPage({
         path: `${slug}contacts`,
         component: path.resolve(`src/templates/contact-page.tsx`),
+        context: {
+          lang: language.slug,
+        },
         slices: {
-          header: `header-${language.slug}`,
+          header: `header_${language.slug}`,
         },
       })
     })

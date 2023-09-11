@@ -32,7 +32,6 @@ const Hero = ({ hero }: IHeroProps) => {
     navigate("/vacancies")
   }
 
-  console.log(heroTitle, heroShortDescription, heroTextButton)
   return (
     <Overlay sourceUrl={heroBackground.sourceUrl}>
       <animated.div style={titleSpring}>

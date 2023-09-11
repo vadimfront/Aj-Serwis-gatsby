@@ -1,17 +1,19 @@
 import { graphql } from "gatsby"
 import React from "react"
+import { Slice } from "gatsby"
 import Hero from "../components/Hero/Hero"
 import { IHomeProps } from "../interfaces/homeInterface"
 import AboutUs from "../components/AboutUs/AboutUs"
 import VacanciesSlider from "../components/VacanciesSlider/VacanciesSlider"
 import ContactUs from "../components/ContactUs/ContactUs"
+import { useLangContext } from "../context/LangProvider"
 
 const HomePage = ({ data }: IHomeProps) => {
   const {
     wpPage: { hero, aboutUs },
     allWpVacancies,
   } = data
-  console.log(allWpVacancies)
+
   return (
     <>
       <Hero hero={hero} />

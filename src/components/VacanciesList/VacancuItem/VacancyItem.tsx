@@ -27,7 +27,7 @@ const VacancyItem: React.FC<IVacancyItem> = ({
   const { city, position, salary } = vacanciesPreview
   return (
     <StyledVacancyItem>
-      <StyledVacancyLink to={uri} state={{ from: location }}>
+      <StyledVacancyLink to={uri}>
         <StyledGradientWrap>
           <StyledVacancyItemImg src={sourceUrl} alt={altText} />
           <StyledImgGradient>
@@ -51,7 +51,7 @@ const VacancyItem: React.FC<IVacancyItem> = ({
         </StyledTextContainer>
       </StyledVacancyLink>
 
-      <StyledVacancyLink to={uri} state={{ from: location }}>
+      <StyledVacancyLink to={uri}>
         <Button
           variant={"card"}
           type={"button"}

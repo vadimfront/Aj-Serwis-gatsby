@@ -12,7 +12,7 @@ import SectionTitle from "../SectionTitle/SectionTitle"
 
 const AboutUs = ({ aboutUs }: any) => {
   const { title, description, image } = aboutUs
-  console.log(image)
+  
   return (
     <SectionContainer>
       <Container>
